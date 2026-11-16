@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oryza — v4</title>
+<style>
+@font-face{font-family:'Alterglam';src:url(./../assets/0f847dc89d876eecdfc7ace55aa0c98c.otf) format('opentype');font-weight:400;font-display:swap}
+@font-face{font-family:'Alterglam';src:url(./../assets/4324e56feb191f723f5a958ea10f8a4f.otf) format('opentype');font-weight:200;font-display:swap}
+@font-face{font-family:'Inter';src:url(./../assets/09131f2b7aa176ecde329596c623188e.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url(./../assets/885ea0d967668ccd6a5044b01b51ffd9.ttf) format('truetype');font-weight:700;font-display:swap}
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{opacity:.75}
+.l,.o{transform-box:fill-box;transform-origin:center}
+@keyframes rise{from{opacity:0;transform:translateY(30%)}to{opacity:1;transform:none}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes settle{from{transform:rotate(-270deg)}to{transform:rotate(0deg)}}
+@keyframes fadeA{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}
+@keyframes fadeB{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}
+@keyframes drift{0%{background-position:0% 0%}50%{background-position:100% 70%}100%{background-position:0% 0%}}
+.lw .l{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.lw .l1{animation-delay:.05s}.lw .l2{animation-delay:.15s}.lw .l3{animation-delay:.25s}.lw .l4{animation-delay:.35s}.lw .l5{animation-delay:.45s}
+.lw .o{animation:settle 1.5s cubic-bezier(.2,.8,.2,1) .05s both}
+.lw:hover .o{animation:spin 1.1s cubic-bezier(.4,0,.2,1)}
+.hero-bg{background-size:180% 180%;animation:drift 22s ease-in-out infinite}
+.fa{animation:fadeA 12s ease-in-out infinite}
+.fb{animation:fadeB 12s ease-in-out infinite}
+.spin{transform-origin:50% 50%;animation:spin 48s linear infinite}
+.spinr{transform-origin:50% 50%;animation:spin 48s linear infinite reverse}
+.ph{background:repeating-linear-gradient(135deg,rgba(255,249,238,.07) 0 14px,rgba(255,249,238,.12) 14px 28px),#4a0c18}
+.ul{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+@media (prefers-reduced-motion:reduce){.lw .l,.lw .o,.lw:hover .o,.hero-bg,.fa,.fb,.spin,.spinr{animation:none!important}.fb{opacity:0}}
+</style>
+</head>
+<body>
+<div style="width:100%;background:#FFF9EE;color:#000;font-family:'Inter',system-ui,sans-serif;font-weight:400;font-size:17px;line-height:1.5;padding:12px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px">
+
+<!-- HERO -->
+<section class="hero-bg" style="position:relative;overflow:hidden;border-radius:28px;color:#FFF9EE;min-height:780px;box-sizing:border-box;padding:40px;display:flex;flex-direction:column;justify-content:space-between;gap:48px;background-color:#5a0f1c;background-image:radial-gradient(55% 60% at 30% 10%,#82243a 0%,rgba(130,36,58,0) 70%),radial-gradient(45% 55% at 92% 70%,#2a0508 0%,rgba(42,5,8,0) 70%),radial-gradient(50% 50% at 10% 90%,#3a0710 0%,rgba(58,7,16,0) 70%)">
+<div class="fa" style="position:absolute;right:-6%;top:6%;width:min(62vw,720px);pointer-events:none"><svg class="spin" aria-hidden="true" viewBox="0 0 800 782" style="display:block;width:100%"><path d="M368.0 780.9C246.5 771.9 141.3 715.3 73.8 622.8C-25.6 486.7 -24.1 288.7 77.2 154.6C163.1 41.1 307.4 -15.9 458.3 4.1C689.5 34.7 837.9 243.8 791.5 473.6C752.3 667.1 574.3 796.3 368.0 780.9ZM612.2 567.6C620.4 564.2 627.1 558.8 635.8 548.5C678.5 497.8 692.9 428.1 675.4 357.0C649.7 252.2 565.3 155.0 471.9 122.5C385.1 92.3 283.4 119.3 252.6 180.7C234.8 216.3 245.7 268.2 279.0 306.9C299.1 330.1 324.0 345.3 390.0 374.5C422.2 388.8 436.6 395.9 453.0 405.6C497.7 432.2 525.4 463.0 544.0 506.5C558.9 541.2 575.1 563.3 589.4 568.4C595.9 570.7 605.5 570.3 612.2 567.6Z" fill="#1a0306" fill-opacity=".45" fill-rule="evenodd"></path></svg></div>
+<div class="fb" style="position:absolute;right:-6%;top:6%;width:min(62vw,720px);pointer-events:none;opacity:0"><svg class="spinr" aria-hidden="true" viewBox="0 0 789 800" style="display:block;width:100%"><path d="M339.0 799.4C337.1 799.2 331.2 798.5 326.0 797.9C240.9 788.2 155.2 736.1 90.0 654.4C-14.3 523.8 -28.9 372.5 52.6 267.4C79.1 233.2 107.5 230.9 133.7 260.9C144.7 273.5 151.7 284.7 164.7 310.5C183.0 346.9 193.8 362.8 214.4 383.9C249.9 420.1 280.7 437.9 370.2 473.6C445.7 503.6 473.7 519.0 500.4 544.9C543.3 586.6 562.8 647.3 548.3 693.5C531.9 745.7 472.6 785.4 393.0 797.5C383.0 799.0 346.7 800.3 339.0 799.4ZM657.5 654.2C634.7 646.3 612.0 616.4 591.4 567.0C575.8 529.7 557.3 502.1 528.6 473.5C490.7 435.7 456.3 414.9 365.4 374.7C280.2 337.0 251.3 319.6 220.0 287.4C173.7 239.7 153.1 169.9 169.7 117.2C186.8 62.8 246.6 20.5 328.1 5.1C407.6 -9.9 493.8 9.0 567.9 57.7C694.1 140.6 781.9 286.8 788.5 425.0C792.2 501.5 761.2 586.9 711.9 636.0C694.4 653.4 674.5 660.1 657.5 654.2Z" fill="#1a0306" fill-opacity=".45" fill-rule="evenodd"></path></svg></div>
+<header style="position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+<a href="#top" aria-label="Oryza"><svg class="lw" viewBox="0 0 1600 440" role="img" aria-label="Oryza" style="width:200px;display:block;color:#FFF9EE"><g class="l l1"><path class="o" d="M150.2 323.9C60.3 316.2 -3.3 244.7 0.3 155.5C3.6 73.7 62.1 11.3 145.0 1.5C254.3 -11.5 342.4 73.5 331.0 180.8C321.5 269.8 243.0 331.9 150.2 323.9ZM254.5 235.1C259.3 233.0 266.8 224.9 271.4 217.0C295.3 176.3 281.6 119.2 238.2 77.8C216.2 56.9 195.0 47.3 168.9 46.3C124.9 44.6 94.5 69.7 102.4 101.0C108.5 124.9 121.4 137.2 158.0 153.7C202.1 173.7 213.2 183.1 226.9 212.4C233.2 225.9 237.8 232.2 243.3 234.9C248.4 237.4 249.4 237.5 254.5 235.1Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l2"><path d="M384.2 162.2L384.5 7.5L418.2 7.2L452.0 7.0L452.0 32.5C452.0 46.5 452.3 58.0 452.8 58.0C453.2 57.9 455.2 55.5 457.3 52.6C461.0 47.5 474.3 33.8 480.7 28.6C497.7 14.6 523.4 4.6 545.8 3.3L556.0 2.7L556.0 37.7L556.0 72.7L547.8 72.9C506.3 73.9 472.0 95.6 459.1 128.9C452.6 145.8 452.6 145.1 452.2 235.2L451.9 317.0L417.9 317.0L384.0 317.0L384.2 162.2Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l3"><path d="M710.9 438.5C656.5 431.1 615.4 397.6 597.1 345.8L594.1 337.0L629.3 337.1L664.5 337.1L669.0 344.2C695.4 385.5 764.3 388.6 793.5 349.7C805.9 333.3 808.2 324.9 808.9 293.7C809.2 280.1 809.2 269.0 808.8 269.0C808.3 269.0 808.0 269.4 808.0 269.9C808.0 271.4 792.5 287.3 786.8 291.8C762.6 310.4 731.3 319.0 698.6 316.1C640.7 311.0 602.0 275.2 593.5 219.0C592.3 211.2 592.0 191.4 592.0 108.2L592.0 7.0L625.8 7.2L659.5 7.5L660.0 100.0C660.6 200.8 660.3 194.9 666.3 209.9C679.9 243.6 720.4 259.3 760.7 246.5C781.9 239.8 797.5 224.3 805.4 202.3L808.5 193.5L809.0 100.5L809.5 7.5L843.5 7.5L877.5 7.5L877.8 154.5C878.1 323.0 878.1 323.7 870.3 348.5C850.6 411.3 784.6 448.5 710.9 438.5Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l4"><path d="M1080.0 324.0C1045.3 321.3 1014.1 310.8 989.2 293.4L982.7 288.8L966.1 305.4L949.5 322.0L941.7 322.0L934.0 322.0L934.0 282.2L934.0 242.5L950.8 225.5C1042.2 133.0 1099.6 74.7 1099.8 73.9C1100.0 73.4 1067.0 73.0 1018.1 73.0L936.0 73.0L936.2 40.3L936.5 7.5L1065.8 7.2L1195.0 7.0L1195.0 40.2L1195.0 73.5L1111.9 157.5L1028.8 241.5L1035.0 244.3C1044.3 248.5 1057.1 252.6 1069.0 255.2C1084.3 258.5 1118.6 258.5 1133.7 255.2C1160.7 249.3 1185.8 237.5 1202.2 223.0L1207.0 218.8L1207.0 255.4L1207.0 292.0L1200.2 296.4C1169.1 316.5 1122.3 327.2 1080.0 324.0Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l5"><path d="M1375.5 324.0C1283.4 316.0 1222.9 230.4 1239.1 131.2C1253.3 44.4 1330.3 -12.3 1414.0 2.4C1444.6 7.8 1476.0 26.9 1495.3 52.0L1498.0 55.5L1498.0 31.2L1498.0 7.0L1531.8 7.2L1565.5 7.5L1566.0 120.0C1566.6 244.2 1566.1 235.4 1572.9 243.2C1576.9 247.8 1584.0 250.8 1592.9 251.6L1600.0 252.3L1600.0 284.8L1600.0 317.2L1579.8 316.7C1556.2 316.2 1549.0 314.7 1534.5 307.6C1519.4 300.1 1509.8 289.5 1503.5 273.5C1502.0 269.6 1500.7 266.4 1500.6 266.3C1500.4 266.1 1497.5 269.6 1494.0 274.1C1466.1 309.4 1422.0 328.0 1375.5 324.0ZM1424.0 256.6C1511.2 237.4 1524.7 113.7 1443.9 75.0C1420.6 63.9 1389.3 63.0 1365.1 72.9C1325.8 88.9 1302.1 129.6 1306.9 172.6C1312.2 219.4 1343.4 251.5 1390.5 258.4C1396.1 259.2 1417.4 258.1 1424.0 256.6Z" fill="currentColor" fill-rule="evenodd"></path></g></svg></a>
+<nav style="display:flex;flex-wrap:wrap;gap:28px;align-items:center;font-size:15px">
+<a href="https://oryza.choiceqr.com">Menu</a><a href="#dvur">Dvůr</a><a href="#kde">Kde a kdy</a>
+</nav>
+</header>
+<div id="top" style="position:relative;display:flex;flex-direction:column;gap:28px;max-width:980px">
+<p style="margin:0;font-size:15px;letter-spacing:.04em">café · bistro · bar</p>
+<h1 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:200;font-size:clamp(46px,7.6vw,112px);line-height:1;letter-spacing:-.01em">Teplo ukryté ve dvoře.</h1>
+<p style="margin:0;max-width:520px;font-size:19px">U Lihovaru 3398/9, Praha 5 – Smíchov.</p>
+<div style="display:flex;flex-wrap:wrap;gap:28px;align-items:center">
+<a href="https://oryza.choiceqr.com" style="background:#FFF9EE;color:#6F1223;padding:0 36px;min-height:56px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;box-sizing:border-box">Menu</a>
+<a class="ul" href="#kde">Kde nás najdeš</a>
+</div>
+</div>
+</section>
+
+<!-- 01 DVŮR -->
+<section id="dvur" style="border-radius:28px;overflow:hidden;background:#6F1223;color:#FFF9EE;display:flex;flex-wrap:wrap">
+<div style="flex:1 1 320px;max-width:400px;min-height:560px;box-sizing:border-box;padding:32px;background:#FFF9EE;color:#000;border-radius:0 28px 28px 0;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;font-size:14px"><span>oryza</span><span>01</span></div>
+<h2 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:40px;line-height:1.02;letter-spacing:-.01em">Dvůr</h2>
+</div>
+<div style="flex:999 1 560px;min-width:0;box-sizing:border-box;padding:56px;display:flex;flex-direction:column;gap:32px;position:relative">
+<div class="ph" style="position:relative;flex:1;min-height:480px;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:40px;box-sizing:border-box;gap:20px">
+<svg aria-hidden="true" viewBox="0 0 789 800" style="position:absolute;right:-8%;top:-10%;width:70%;opacity:.35"><path d="M339.0 799.4C337.1 799.2 331.2 798.5 326.0 797.9C240.9 788.2 155.2 736.1 90.0 654.4C-14.3 523.8 -28.9 372.5 52.6 267.4C79.1 233.2 107.5 230.9 133.7 260.9C144.7 273.5 151.7 284.7 164.7 310.5C183.0 346.9 193.8 362.8 214.4 383.9C249.9 420.1 280.7 437.9 370.2 473.6C445.7 503.6 473.7 519.0 500.4 544.9C543.3 586.6 562.8 647.3 548.3 693.5C531.9 745.7 472.6 785.4 393.0 797.5C383.0 799.0 346.7 800.3 339.0 799.4ZM657.5 654.2C634.7 646.3 612.0 616.4 591.4 567.0C575.8 529.7 557.3 502.1 528.6 473.5C490.7 435.7 456.3 414.9 365.4 374.7C280.2 337.0 251.3 319.6 220.0 287.4C173.7 239.7 153.1 169.9 169.7 117.2C186.8 62.8 246.6 20.5 328.1 5.1C407.6 -9.9 493.8 9.0 567.9 57.7C694.1 140.6 781.9 286.8 788.5 425.0C792.2 501.5 761.2 586.9 711.9 636.0C694.4 653.4 674.5 660.1 657.5 654.2Z" fill="#2a0508" fill-rule="evenodd"></path></svg>
+<span style="position:absolute;top:24px;left:24px;font-size:13px;opacity:.9">[FOTO: dvůr — cihlové zdi, pergola, popínavky, lehátka]</span>
+<h2 style="position:relative;margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.02">Kavárna schovaná<br>ve dvoře</h2>
+<p style="position:relative;margin:0;max-width:480px;font-size:18px">Oryza je ve vnitrobloku Lihovaru na Smíchově: mezi cihlovými zdmi, pergolou a popínavými rostlinami. Lehátka, káva a klid dvora.</p>
+</div>
+</div>
+</section>
+
+<!-- 02 NA STOLE -->
+<section id="stul" style="border-radius:28px;overflow:hidden;background:#6F1223;color:#FFF9EE;display:flex;flex-wrap:wrap">
+<div style="flex:1 1 320px;max-width:400px;min-height:560px;box-sizing:border-box;padding:32px;background:#FFF9EE;color:#000;border-radius:0 28px 28px 0;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;font-size:14px"><span>oryza</span><span>02</span></div>
+<h2 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:40px;line-height:1.02;letter-spacing:-.01em">Na stole</h2>
+</div>
+<div style="flex:999 1 560px;min-width:0;box-sizing:border-box;padding:56px;display:flex;flex-direction:column;gap:40px;position:relative">
+<div style="display:flex;flex-wrap:wrap;gap:20px">
+<div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div class="ph" style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden"><span style="position:absolute;top:16px;left:16px;right:16px;font-size:13px;opacity:.9">[FOTO: káva na dřevěném podnosu s logem]</span></div>
+<h3 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:28px;line-height:1.05">Výběrová káva</h3>
+<p style="margin:0;font-size:15px">Espresso, cappuccino, café latte, batch brew a matcha.</p>
+</div>
+<div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div class="ph" style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden"><span style="position:absolute;top:16px;left:16px;right:16px;font-size:13px;opacity:.9">[FOTO: vietnamská káva, ruka s hrnkem]</span></div>
+<h3 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:28px;line-height:1.05">Vietnamská káva</h3>
+<p style="margin:0;font-size:15px">Naše specialita vedle klasické kávy.</p>
+</div>
+<div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:14px">
+<div class="ph" style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden"><span style="position:absolute;top:16px;left:16px;right:16px;font-size:13px;opacity:.9">[FOTO: zákusek nebo poke bowl, shora]</span></div>
+<h3 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:28px;line-height:1.05">Něco k tomu</h3>
+<p style="margin:0;font-size:15px">Poke bowls, polévky, zákusky a pivo.</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:16px 0;border-top:1px solid rgba(255,249,238,.22)"><div><div style="font-family:'Alterglam',sans-serif;font-size:26px;line-height:1.1">Espresso</div><div style="font-size:15px;opacity:.85">30 ml</div></div><div style="font-family:'Alterglam',sans-serif;font-weight:200;font-size:30px;line-height:1.1">55</div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:16px 0;border-top:1px solid rgba(255,249,238,.22)"><div><div style="font-family:'Alterglam',sans-serif;font-size:26px;line-height:1.1">Cappuccino</div><div style="font-size:15px;opacity:.85">300 ml</div></div><div style="font-family:'Alterglam',sans-serif;font-weight:200;font-size:30px;line-height:1.1">87</div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:16px 0;border-top:1px solid rgba(255,249,238,.22)"><div><div style="font-family:'Alterglam',sans-serif;font-size:26px;line-height:1.1">Café latte</div><div style="font-size:15px;opacity:.85">300 ml</div></div><div style="font-family:'Alterglam',sans-serif;font-weight:200;font-size:30px;line-height:1.1">80</div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:16px 0;border-top:1px solid rgba(255,249,238,.22)"><div><div style="font-family:'Alterglam',sans-serif;font-size:26px;line-height:1.1">Batch brew</div><div style="font-size:15px;opacity:.85">200/300 ml</div></div><div style="font-family:'Alterglam',sans-serif;font-weight:200;font-size:30px;line-height:1.1">95</div></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding:16px 0;border-top:1px solid rgba(255,249,238,.22);border-bottom:1px solid rgba(255,249,238,.22)"><div><div style="font-family:'Alterglam',sans-serif;font-size:26px;line-height:1.1">Matcha</div><div style="font-size:15px;opacity:.85">250 ml</div></div><div style="font-family:'Alterglam',sans-serif;font-weight:200;font-size:30px;line-height:1.1">100</div></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:24px 40px;align-items:center;justify-content:space-between">
+<div style="display:flex;flex-direction:column;gap:10px;max-width:460px">
+<span style="font-size:15px;opacity:.9">Ceny v Kč. Celé menu najdeš přes QR kód u stolu nebo online.</span>
+<a class="ul" href="https://oryza.choiceqr.com">oryza.choiceqr.com</a>
+</div>
+<div style="flex:0 0 140px;width:140px;height:140px;border-radius:16px;border:1.5px dashed #FFF9EE;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;box-sizing:border-box;font-size:13px">[QR KÓD Z CHOICE QR]</div>
+</div>
+<svg aria-hidden="true" viewBox="0 0 789 800" style="position:absolute;right:-60px;bottom:-80px;width:340px;opacity:.14;pointer-events:none"><path d="M339.0 799.4C337.1 799.2 331.2 798.5 326.0 797.9C240.9 788.2 155.2 736.1 90.0 654.4C-14.3 523.8 -28.9 372.5 52.6 267.4C79.1 233.2 107.5 230.9 133.7 260.9C144.7 273.5 151.7 284.7 164.7 310.5C183.0 346.9 193.8 362.8 214.4 383.9C249.9 420.1 280.7 437.9 370.2 473.6C445.7 503.6 473.7 519.0 500.4 544.9C543.3 586.6 562.8 647.3 548.3 693.5C531.9 745.7 472.6 785.4 393.0 797.5C383.0 799.0 346.7 800.3 339.0 799.4ZM657.5 654.2C634.7 646.3 612.0 616.4 591.4 567.0C575.8 529.7 557.3 502.1 528.6 473.5C490.7 435.7 456.3 414.9 365.4 374.7C280.2 337.0 251.3 319.6 220.0 287.4C173.7 239.7 153.1 169.9 169.7 117.2C186.8 62.8 246.6 20.5 328.1 5.1C407.6 -9.9 493.8 9.0 567.9 57.7C694.1 140.6 781.9 286.8 788.5 425.0C792.2 501.5 761.2 586.9 711.9 636.0C694.4 653.4 674.5 660.1 657.5 654.2Z" fill="#FFF9EE" fill-rule="evenodd"></path></svg>
+</div>
+</section>
+
+<!-- 03 KDE A KDY -->
+<section id="kde" style="border-radius:28px;overflow:hidden;background:#6F1223;color:#FFF9EE;display:flex;flex-wrap:wrap">
+<div style="flex:1 1 320px;max-width:400px;min-height:560px;box-sizing:border-box;padding:32px;background:#FFF9EE;color:#000;border-radius:0 28px 28px 0;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;font-size:14px"><span>oryza</span><span>03</span></div>
+<h2 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:40px;line-height:1.02;letter-spacing:-.01em">Kde a kdy</h2>
+</div>
+<div style="flex:999 1 560px;min-width:0;box-sizing:border-box;padding:56px;display:flex;flex-wrap:wrap;gap:40px;position:relative">
+<div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<h3 style="margin:0;font-family:'Alterglam',sans-serif;font-weight:400;font-size:34px;line-height:1.05">U Lihovaru 3398/9</h3>
+<span>150 00 Praha 5 – Smíchov</span>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-top:1px solid rgba(255,249,238,.22)"><span>Po–Pá</span><span>8:00–19:00</span></div>
+<div style="display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-top:1px solid rgba(255,249,238,.22)"><span>Sobota</span><span>9:00–19:00</span></div>
+<div style="display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-top:1px solid rgba(255,249,238,.22);border-bottom:1px solid rgba(255,249,238,.22)"><span>Neděle</span><span>10:00–19:00</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<a href="tel:+420720226175">+420 720 226 175</a>
+<a href="https://www.instagram.com/oryza_lihovar/">@oryza_lihovar</a>
+</div>
+<a class="ul" href="https://www.google.com/maps/place/Oryza/@50.0528012,14.409735,17z" style="align-self:flex-start">Navigovat</a>
+</div>
+<div class="ph" style="flex:1 1 320px;min-width:0;min-height:420px;border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;font-size:14px">[MAPA: U Lihovaru 3398/9]</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-radius:28px;background:#6F1223;color:#FFF9EE;box-sizing:border-box;padding:56px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;font-size:16px">
+<div style="display:flex;flex-direction:column;gap:6px"><span style="opacity:.8">Kontakt</span><a href="tel:+420720226175">+420 720 226 175</a><a href="https://www.instagram.com/oryza_lihovar/">@oryza_lihovar</a></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="opacity:.8">Navštiv</span><a href="#kde">U Lihovaru 3398/9</a><a href="#kde">Praha 5 – Smíchov</a></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="opacity:.8">Objednej</span><a href="https://oryza.choiceqr.com">oryza.choiceqr.com</a></div>
+</div>
+<svg viewBox="0 0 1600 440" role="img" aria-label="Oryza" style="width:100%;display:block;color:#FFF9EE"><g class="l l1"><path class="o" d="M150.2 323.9C60.3 316.2 -3.3 244.7 0.3 155.5C3.6 73.7 62.1 11.3 145.0 1.5C254.3 -11.5 342.4 73.5 331.0 180.8C321.5 269.8 243.0 331.9 150.2 323.9ZM254.5 235.1C259.3 233.0 266.8 224.9 271.4 217.0C295.3 176.3 281.6 119.2 238.2 77.8C216.2 56.9 195.0 47.3 168.9 46.3C124.9 44.6 94.5 69.7 102.4 101.0C108.5 124.9 121.4 137.2 158.0 153.7C202.1 173.7 213.2 183.1 226.9 212.4C233.2 225.9 237.8 232.2 243.3 234.9C248.4 237.4 249.4 237.5 254.5 235.1Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l2"><path d="M384.2 162.2L384.5 7.5L418.2 7.2L452.0 7.0L452.0 32.5C452.0 46.5 452.3 58.0 452.8 58.0C453.2 57.9 455.2 55.5 457.3 52.6C461.0 47.5 474.3 33.8 480.7 28.6C497.7 14.6 523.4 4.6 545.8 3.3L556.0 2.7L556.0 37.7L556.0 72.7L547.8 72.9C506.3 73.9 472.0 95.6 459.1 128.9C452.6 145.8 452.6 145.1 452.2 235.2L451.9 317.0L417.9 317.0L384.0 317.0L384.2 162.2Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l3"><path d="M710.9 438.5C656.5 431.1 615.4 397.6 597.1 345.8L594.1 337.0L629.3 337.1L664.5 337.1L669.0 344.2C695.4 385.5 764.3 388.6 793.5 349.7C805.9 333.3 808.2 324.9 808.9 293.7C809.2 280.1 809.2 269.0 808.8 269.0C808.3 269.0 808.0 269.4 808.0 269.9C808.0 271.4 792.5 287.3 786.8 291.8C762.6 310.4 731.3 319.0 698.6 316.1C640.7 311.0 602.0 275.2 593.5 219.0C592.3 211.2 592.0 191.4 592.0 108.2L592.0 7.0L625.8 7.2L659.5 7.5L660.0 100.0C660.6 200.8 660.3 194.9 666.3 209.9C679.9 243.6 720.4 259.3 760.7 246.5C781.9 239.8 797.5 224.3 805.4 202.3L808.5 193.5L809.0 100.5L809.5 7.5L843.5 7.5L877.5 7.5L877.8 154.5C878.1 323.0 878.1 323.7 870.3 348.5C850.6 411.3 784.6 448.5 710.9 438.5Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l4"><path d="M1080.0 324.0C1045.3 321.3 1014.1 310.8 989.2 293.4L982.7 288.8L966.1 305.4L949.5 322.0L941.7 322.0L934.0 322.0L934.0 282.2L934.0 242.5L950.8 225.5C1042.2 133.0 1099.6 74.7 1099.8 73.9C1100.0 73.4 1067.0 73.0 1018.1 73.0L936.0 73.0L936.2 40.3L936.5 7.5L1065.8 7.2L1195.0 7.0L1195.0 40.2L1195.0 73.5L1111.9 157.5L1028.8 241.5L1035.0 244.3C1044.3 248.5 1057.1 252.6 1069.0 255.2C1084.3 258.5 1118.6 258.5 1133.7 255.2C1160.7 249.3 1185.8 237.5 1202.2 223.0L1207.0 218.8L1207.0 255.4L1207.0 292.0L1200.2 296.4C1169.1 316.5 1122.3 327.2 1080.0 324.0Z" fill="currentColor" fill-rule="evenodd"></path></g><g class="l l5"><path d="M1375.5 324.0C1283.4 316.0 1222.9 230.4 1239.1 131.2C1253.3 44.4 1330.3 -12.3 1414.0 2.4C1444.6 7.8 1476.0 26.9 1495.3 52.0L1498.0 55.5L1498.0 31.2L1498.0 7.0L1531.8 7.2L1565.5 7.5L1566.0 120.0C1566.6 244.2 1566.1 235.4 1572.9 243.2C1576.9 247.8 1584.0 250.8 1592.9 251.6L1600.0 252.3L1600.0 284.8L1600.0 317.2L1579.8 316.7C1556.2 316.2 1549.0 314.7 1534.5 307.6C1519.4 300.1 1509.8 289.5 1503.5 273.5C1502.0 269.6 1500.7 266.4 1500.6 266.3C1500.4 266.1 1497.5 269.6 1494.0 274.1C1466.1 309.4 1422.0 328.0 1375.5 324.0ZM1424.0 256.6C1511.2 237.4 1524.7 113.7 1443.9 75.0C1420.6 63.9 1389.3 63.0 1365.1 72.9C1325.8 88.9 1302.1 129.6 1306.9 172.6C1312.2 219.4 1343.4 251.5 1390.5 258.4C1396.1 259.2 1417.4 258.1 1424.0 256.6Z" fill="currentColor" fill-rule="evenodd"></path></g></svg>
+<div style="font-size:14px;opacity:.85">© 2026 Oryza</div>
+</footer>
+
+</div>
+</body>
+</html>
